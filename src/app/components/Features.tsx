@@ -50,7 +50,7 @@ function Features() {
   ];
 
   return (
-<section id="why" className="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
+<section id="features" className="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
   <div className="container mx-auto px-4 md:px-6">
     {/* Section Title */}
     <div className="flex justify-start mb-10">
@@ -72,10 +72,10 @@ function Features() {
           className="bg-white border border-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300"
           style={{ minHeight: '220px' }}
         >
-          <div className="flex items-center justify-center bg-white border-[1.2px] border-white w-10 h-10 rounded-md mb-4">
-            {React.createElement(feature.icon, { className: "text-[#020124] text-lg" })}
+          <div className="flex items-center justify-center bg-[#58b4ff] border-[1.2px] border-white w-10 h-10 rounded-md mb-4">
+            {React.createElement(feature.icon, { className: "text-white text-lg" })}
           </div>
-          <h3 className="text-lg font-semibold text-black mb-2">
+          <h3 className="text-lg font-semibold text-[#020124] mb-2">
             {feature.title}
           </h3>
           <p className="text-gray-600 text-sm leading-relaxed">
@@ -93,13 +93,13 @@ function Features() {
           className="bg-white border border-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300"
           style={{ minHeight: '220px' }}
         >
-          <div className="flex items-center justify-center bg-transparent border-[1.2px] border-[#020124] w-10 h-10 rounded-md mb-4">
-            {React.createElement(feature.icon, { className: "text-[#020124] text-lg" })}
+          <div className="flex items-center justify-center bg-[#58b4ff] border-[1.2px] border-white w-10 h-10 rounded-md mb-4">
+            {React.createElement(feature.icon, { className: "text-white text-lg" })}
           </div>
-          <h3 className="text-lg font-semibold text-black mb-2">
+          <h3 className="text-lg font-semibold text-[#020124] mb-2">
             {feature.title}
           </h3>
-          <p className="text-gray-600 text-sm leading-relaxed">
+          <p className="text-gray-600 text-lg md:text-sm leading-relaxed">
             {feature.description}
           </p>
         </div>

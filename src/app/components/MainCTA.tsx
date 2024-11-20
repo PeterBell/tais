@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { ArrowUpRight } from "lucide-react";
 
 
 
@@ -24,7 +25,7 @@ export default function MainCTA() {
       style={{
         background: `
           radial-gradient(circle at 20% 30%, rgba(88, 180, 255, 0.4) 0%, transparent 40%),
-          radial-gradient(circle at 80% 70%, rgba(147, 51, 234, 0.4) 0%, transparent 40%)
+          radial-gradient(circle at 80% 70%, rgba(2, 1, 36, 0.4) 0%, transparent 40%)
         `
       }}
     />
@@ -33,7 +34,7 @@ export default function MainCTA() {
     <div className="relative z-10 bg-white rounded-xl shadow-2xl px-12 py-24 sm:p-12 max-w-6xl w-full">
       <div className="flex flex-col sm:flex-row items-center space-y-6 sm:space-y-0 sm:space-x-6">
         <div className="text-left space-y-6 flex-grow sm:basis-3/4">
-        <h2 className="text-7xl sm:text-4xl md:text-7xl font-bold tracking-tight text-[#020124]">
+        <h2 className="text-4xl  md:text-7xl  lg:text-7xl font-bold tracking-tight text-[#020124]">
           Connect, Learn,<br /> Lead&nbsp;
           <span className="text-[#58B4FF] text-opacity-90">Together.</span>
         </h2>
@@ -42,7 +43,10 @@ export default function MainCTA() {
           </p>
         </div>
         <div className="">
-        <Button variant="gooeyLeft" className="text-3xl py-8 px-12">Apply</Button>
+        <Button variant="gooeyLeft" className="text-3xl py-8 px-12">Apply
+        <ArrowUpRight className="h-6 w-6" />
+        </Button>
+
         </div>
       </div>
     </div>

@@ -25,7 +25,7 @@ function About() {
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
             Empowering Engineering Leaders <span className="text-[#58B4FF]">Globally</span>
           </h2>
-          <p className="text-gray-900 font-normal md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+          <p className="text-gray-900 text-lg font-normal md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
             At Aggregate.dev, we unite senior engineering leaders to connect, share, and grow. Founded by Peter Bell, with over 15 years of experience curating top engineering minds, our mission is to foster impactful, inclusive, and free communities. Whether you&apos;re a startup CTO, Staff+ IC, or Director+ managing large teams, Aggregate.dev offers the connections and resources you need to navigate engineering leadership challenges.
           </p>
         

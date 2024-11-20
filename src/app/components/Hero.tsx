@@ -3,10 +3,33 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
-export default function HeroBanner() {
+export default function HeroBanner({ page }: { page: string }) {
+  const heroContent = {
+    home: {
+      title: "Aggregate.dev",
+      subtitle: "A community of communities for senior engineering leaders",
+      buttonLabel: "Apply",
+      buttonHref: "",
+    },
+    communities: {
+      title: "Join Our Communities",
+      subtitle: "Collaborate with peers to solve enterprise-level challenges",
+      buttonLabel: "Explore Communities",
+      buttonHref: "",
+    },
+    apply: {
+      title: "Apply to Join",
+      subtitle: "Be part of the exclusive Aggregate.dev community",
+      buttonLabel: "Get Started",
+      buttonHref: "/apply",
+    },
+  };
+
+  const content = heroContent[page] || heroContent.home;
   return (
-    <div className="relative min-h-[100vh] flex items-center justify-center bg-[#020124] overflow-hidden">
+    <div id="hero" className="relative min-h-[100vh] flex items-center justify-center bg-[#020124] overflow-hidden">
       {/* Square pattern background */}
       <motion.div 
         initial={{ opacity: 0 }}
@@ -33,7 +56,7 @@ export default function HeroBanner() {
         style={{
           background: `
             radial-gradient(circle at 20% 30%, rgba(88, 180, 255, 0.4) 0%, transparent 40%),
-            radial-gradient(circle at 80% 70%, rgba(147, 51, 234, 0.4) 0%, transparent 40%)
+            radial-gradient(circle at 80% 70%, rgba(2, 1, 36, 0.4) 0%, transparent 40%)
           `
         }}
       />
@@ -52,9 +75,9 @@ export default function HeroBanner() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-[#58B4FF]"
+            className="text-[#58b4ff]"
           >
-            Aggregate
+            {content.title.split(" ")[0]}{" "}
           </motion.span>
           <motion.span 
             initial={{ opacity: 0, scale: 0.9 }}
@@ -62,7 +85,7 @@ export default function HeroBanner() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-white"
           >
-            .dev
+                 {content.title.split(" ").slice(1).join(" ")}
           </motion.span>
         </motion.h1>
         <motion.p 
@@ -71,21 +94,26 @@ export default function HeroBanner() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-xl md:text-2xl text-gray-400 font-light tracking-wide"
         >
-          A community of communities for senior engineering leaders
+          {content.subtitle}
         </motion.p>
 
           
-        <motion.div
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.9 }} // Adjust delay for staggered animation
-        className="flex justify-center"
-      >
-        <Button className="flex items-center mx-auto gap-2 px-6 shadow-none bg-white rounded-lg">
-          <span className="text-xl text-[#020124]">Apply</span>
-          <ArrowUpRight className="h-6 w-6 text-[#020124]" />
-        </Button>
-      </motion.div>
+        {/* Conditional CTA Button */}
+        {page === "home" && (
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.9 }} // Adjust delay for staggered animation
+            className="flex justify-center"
+          >
+            <Link href={content.buttonHref}>
+              <Button variant="gooeyLeft" className="text-2xl">
+                {content.buttonLabel}
+                <ArrowUpRight className="h-6 w-6" />
+              </Button>
+            </Link>
+          </motion.div>
+        )}
       </div>
 
       {/* Animated gradient border at the bottom */}
