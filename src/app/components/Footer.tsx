@@ -1,22 +1,50 @@
 'use client';
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/app/components/ui/button";
 import { Facebook, Instagram, Linkedin, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { Link as ScrollLink } from "react-scroll"; // Importing react-scroll Link
+import { scroller } from "react-scroll"; // Use scroller for manual scrolling
 import Logo from "../../../public/assets/white_logo.png";
 
-const footerLinks = [
+// Define the type for footer links
+type FooterLink = {
+  href: string;
+  label: string;
+  type: "scroll" | "route";
+  target?: string; // Only present if type is "scroll"
+};
+
+const footerLinks: FooterLink[] = [
   { href: "/", label: "Home", type: "scroll", target: "hero" },
   { href: "/", label: "About Us", type: "scroll", target: "about" },
   { href: "/", label: "Why", type: "scroll", target: "features" },
-  { href: "faqs", label: "FAQs", type: "scroll", target: "faqs" },
-  { href: "communities", label: "Communities", type: "scroll", target: "communities" },
-  { href: "/", label: "Sponsor", type: "route" },
+  { href: "/", label: "FAQs", type: "scroll", target: "faq" },
+  { href: "/", label: "Communities", type: "scroll", target: "communities" },
+  { href: "/sponsor", label: "Sponsor", type: "route" },
 ];
 
-export default function Footer() {
+export default function Footer({ currentPage }: { currentPage: string }) {
+  const handleFooterClick = (item: FooterLink) => {
+    if (item.type === "scroll" && item.target) {
+      if (currentPage === "home") {
+        // Scroll directly on the home page
+        scroller.scrollTo(item.target, {
+          spy: true,
+          smooth: true,
+          offset: -64,
+          duration: 500,
+        });
+      } else {
+        // Redirect to home with target query
+        window.location.href = `/?target=${item.target}`;
+      }
+    } else {
+      // Navigate to external route
+      window.location.href = item.href;
+    }
+  };
+
   return (
     <footer className="w-full bg-[#020124] text-white py-12 md:py-16 lg:py-20 rounded-t-[50px]">
       <div className="container px-4 md:px-6">
@@ -56,29 +84,15 @@ export default function Footer() {
           {/* Dynamic Footer Links */}
           <div className="space-y-4">
             <nav className="space-y-2">
-              {footerLinks.map((item, index) =>
-                item.type === "scroll" ? (
-                  <ScrollLink
-                    key={index}
-                    to={item.target}
-                    spy={true}
-                    smooth={true}
-                    offset={-64}
-                    duration={500}
-                    className="block hover:opacity-80 transition-opacity cursor-pointer"
-                  >
-                    {item.label}
-                  </ScrollLink>
-                ) : (
-                  <Link
-                    key={index}
-                    href={item.href}
-                    className="block hover:opacity-80 transition-opacity"
-                  >
-                    {item.label}
-                  </Link>
-                )
-              )}
+              {footerLinks.map((item, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleFooterClick(item)}
+                  className="block hover:opacity-80 transition-opacity cursor-pointer text-left"
+                >
+                  {item.label}
+                </button>
+              ))}
             </nav>
           </div>
 
@@ -89,10 +103,10 @@ export default function Footer() {
           <div className="space-y-4 lg:text-right">
             <h2 className="text-6xl font-bold text-justify opacity-25">Let&apos;s connect</h2>
             <Link href="/apply" className="mt-4">
-            <Button variant="gooeyLeft">
-              Apply
-              <ArrowUpRight className="h-4 w-4" />
-            </Button>
+              <Button variant="gooeyLeft">
+                Apply
+                <ArrowUpRight className="h-4 w-4" />
+              </Button>
             </Link>
           </div>
         </div>

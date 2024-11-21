@@ -5,9 +5,9 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
+} from "@/app/components/ui/accordion";
+import { Button } from "@/app/components/ui/button";
+import { Separator } from "@/app/components/ui/separator";
 import React from "react";
 
 function CommunitiesSection() {

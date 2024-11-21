@@ -1,4 +1,4 @@
-//import Image from "next/image";
+"use client";
 
 import Hero from "@/app/components/Hero";
 import Navbar from "@/app/components/Navbar";
@@ -17,12 +17,12 @@ export default function Communities() {
 
   return (
     <main>
-    <Navbar />
+    <Navbar currentPage={pageInfo.id} />
     <Hero page={pageInfo.id} />
     <CommunitiesSection/>
     <MainCTA/>
     <Faq />
-    <Footer/>
+    <Footer currentPage={pageInfo.id}/>
     </main>
   );
 }

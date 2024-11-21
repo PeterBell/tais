@@ -1,4 +1,4 @@
-
+"use client";
 import Head from "next/head";
 import About from "./components/About";
 import Communities from "./components/Communities";
@@ -12,11 +12,28 @@ import { QuoteSection } from "./components/Quote";
 
 
 
+import { useEffect } from "react";
+import { scroller } from "react-scroll";
+
 export default function Home() {
 
   const pageInfo = {
     id: "home", 
   };
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const target = urlParams.get("target");
+    if (target) {
+      scroller.scrollTo(target, {
+        spy: true,
+        smooth: true,
+        offset: -64,
+        duration: 500,
+      });
+    }
+  }, []);
+
+ 
   return (
     <>
       <Head>
@@ -29,7 +46,7 @@ export default function Home() {
         <link rel="canonical" href="https://www.aggregate.dev/" />
       </Head>
       <main>
-        <Navbar />
+        <Navbar currentPage={pageInfo.id} />
         <Hero page={pageInfo.id} />
         <About />
         <QuoteSection />
@@ -37,7 +54,7 @@ export default function Home() {
         <MainCTA />
         <Communities />
         <Faq />
-        <Footer />
+        <Footer currentPage={pageInfo.id}/>
       </main>
     </>
   );
